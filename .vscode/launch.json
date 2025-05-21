@@ -1,0 +1,522 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "MNIST:main",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--config",
+                "config.py"
+            ],
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}"
+            }
+        },
+        {
+            "name": "data_preprocessing",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/data_preprocessing.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--generate_dataset", "1",
+                "--is_minimize", "0",
+                "--load_prepared_dataset", "0",
+                "--load_raw_dataset", "0",
+                "--print_args", "1",
+                "--print_status", "1",
+                "--hetero", "0",
+                "--num_workers", "1",
+                "--num_samples", "100000",
+                
+                "--dim", "4096",
+                "--computable_params", "[]",
+                "--loadable_params", "[]",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        //GD-type experiments
+        {
+            "name": "GD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/GD.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "GD",
+                "--exp_name", "GD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft','x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "RAC-LoRA_A",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "1",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RAC-LoRA_A",
+                "--exp_name", "RAC-LoRA_A",
+                "--loadable_params", "['L_0_pre', 'L_0_ft','x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "4",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "RAC-LoRA_B",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "2",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RAC-LoRA_B",
+                "--exp_name", "RAC-LoRA_B",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "4",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "RC-LoRA",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "3",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RC-LoRA",
+                "--exp_name", "RC-LoRA",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "4",
+                "--prob", "0.2",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        //stoch setting experiments
+        //in progress
+        //TODO: adjust seeds
+        {
+            "name": "stoch_RC-LoRA-SGD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "30",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RC-LoRA",
+                "--exp_name", "stoch_RC-LoRA-SGD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "1",
+                "--prob", "0.2",
+                "--noise_scale", "1.0"
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "stoch_RAC-LoRA_A-SGD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "50",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RAC-LoRA_A",
+                "--exp_name", "stoch_RAC-LoRA_A-SGD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft','x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "4",
+                "--noise_scale", "1.0"
+
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "stoch_RAC-LoRA_B-SGD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "70",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RAC-LoRA_B",
+                "--exp_name", "stoch_RAC-LoRA_B-SGD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "4",
+                "--noise_scale", "1.0"
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+
+        //finite sum setting experiments
+        //in progress
+        {
+            "name": "finite_RC-LoRA-SGD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "90",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft', 'A_ft', 'b_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RC-LoRA",
+                "--exp_name", "finite_RC-LoRA-SGD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm', 'epochs']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "1",
+                "--prob", "0.5",
+                "--batchsize", "100",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "finite_RAC-LoRA_A-SGD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "110",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft', 'A_ft', 'b_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RAC-LoRA_A",
+                "--exp_name", "finite_RAC-LoRA_A-SGD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft','x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm', 'epochs']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "1",
+                "--batchsize", "100",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "finite_RAC-LoRA_B-SGD",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "130",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft', 'A_ft', 'b_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RAC-LoRA_B",
+                "--exp_name", "finite_RAC-LoRA_B-SGD",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm', 'epochs']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "1",
+                "--batchsize", "10",
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+        {
+            "name": "finite_RC-LoRA-PAGE",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "/ibex/user/sokoi0a/_projects/2024_p-LORA-experiments/LinReg/RC-LoRA.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--dataset", "synthetic_dense",
+                "--loss_func", "lin-reg",
+                "--regularizer_type", "non-cvx",
+                "--num_samples", "100000",
+                "--tol", "1e-12",
+                "--dim", "4096",
+                
+                "--use_ray", "0",
+                "--is_sparse_dataset", "0",
+                "--print_status", "1",
+                "--is_grad_comp_init", "0",
+                "--PRINT_EVERY", "10",
+                "--SAVE_EVERY", "10000000",
+                "--NUM_LAUNCHES", "1",
+                "--seed", "150",
+                "--max_iters", "100",
+                "--step_size", "const",
+
+                "--stop_criteruim_params", "['iters', 'sqnorm']",
+                "--loadable_datasets", "['X_ft', 'y_ft', 'c_ft', 'A_ft', 'b_ft']",
+                "--computable_params", "[]",
+
+                "--alg_name", "RC-LoRA",
+                "--exp_name", "finite_RC-LoRA-PAGE",
+                "--loadable_params", "['L_0_pre', 'L_0_ft', 'x_star_pre', 'f_star_pre','num_samples_pre','num_samples_ft','la_pre','la_ft']",
+                "--collectable_metrics", "['iters', 'sqnorm', 'epochs']",
+
+                "--factor", "1",
+                "--num_workers", "1",
+                "--rank", "1",
+                "--prob", "0.5",
+                "--batchsize", "100",
+
+            ],
+            "python": "/home/sokoi0a/anaconda3/envs/pyten/bin/python"
+        },
+    ]
+}
